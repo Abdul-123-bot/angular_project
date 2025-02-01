@@ -1,27 +1,14 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import { provideRouter, RouterOutlet } from '@angular/router';
+import { routes } from './app.routes';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: '<router-outlet></router-outlet>',
   standalone: true, // Mark this component as standalone
-  imports: [BrowserModule, ReactiveFormsModule],
+  imports: [RouterOutlet],
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  userForm: FormGroup;
-
-  constructor(private fb: FormBuilder) {
-    // Initialize the form group with controls
-    this.userForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]]
-    });
-  }
-
-  onSubmit(): void {
-    console.log(this.userForm.value);
-  }
+ 
 }
